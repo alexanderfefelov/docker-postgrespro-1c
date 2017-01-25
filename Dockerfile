@@ -38,7 +38,7 @@ COPY container/docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-VOLUME /var/lib/postgresql/data
+VOLUME $PGDATA
 
 EXPOSE 5432
 
