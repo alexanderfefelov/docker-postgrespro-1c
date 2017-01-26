@@ -34,6 +34,7 @@ RUN mkdir --parent /var/run/postgresql \
   && mkdir /docker-entrypoint-initdb.d
 
 COPY container/docker-entrypoint.sh /
+COPY container/postgresql.conf.sh /docker-entrypoint-initdb.d
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
