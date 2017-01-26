@@ -2,7 +2,7 @@
 
 ## Что это?
 
-docker-postgrespro-1c -- это Docker-контейнер PostgreSQL для использования с сервером 1С:Предприятия (который, в свою очередь, тоже может работать в [контейнере Docker](https://github.com/alexanderfefelov/docker-1c-server). В контейнере используется дистрибутив сборка Postgres Professional, которая содержит патчи, разработанные компанией 1С.
+docker-postgrespro-1c -- это Docker-контейнер PostgreSQL для использования с сервером 1С:Предприятия (который, в свою очередь, тоже может работать в [контейнере Docker](https://github.com/alexanderfefelov/docker-1c-server)). В контейнере используется дистрибутив сборка Postgres Professional, которая содержит патчи, разработанные компанией 1С.
 
 ## Как это установить?
 
