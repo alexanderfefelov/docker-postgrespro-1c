@@ -30,3 +30,13 @@ docker-postgrespro-1c -- это Docker-контейнер PostgreSQL для ис
 ## Где мои данные?
 
 Данные PostgreSQL вы можете найти в каталоге `/var/lib/docker/volumes/postgrespro-1c-data/_data`.
+
+## Как это удалить?
+
+Удалите контейнер:
+
+    docker rm -f postgrespro-1c
+
+:fire: Удалите данные:
+
+    docker volume rm postgrespro-1c-data
