@@ -10,6 +10,8 @@ RUN groupadd postgres --gid=999 \
 ENV GOSU_VERSION 1.7
 RUN apt-get -qq update \
   && apt-get -qq install --yes --no-install-recommends ca-certificates wget locales \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* \
   && wget --quiet -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
   && chmod +x /usr/local/bin/gosu \
   && gosu nobody true
@@ -24,7 +26,9 @@ RUN echo deb http://1c.postgrespro.ru/deb/ xenial main > /etc/apt/sources.list.d
   && apt-get -qq update \
   && apt-get -qq install --yes --no-install-recommends postgresql-common-pro-1c \
   && sed -ri 's/#(create_main_cluster) .*$/\1 = false/' /etc/postgresql-common/createcluster.conf \
-  && apt-get -qq install --yes --no-install-recommends postgresql-pro-1c-$SERVER_VERSION
+  && apt-get -qq install --yes --no-install-recommends postgresql-pro-1c-$SERVER_VERSION \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir --parent /var/run/postgresql \
   && chown --recursive postgres:postgres /var/run/postgresql \
