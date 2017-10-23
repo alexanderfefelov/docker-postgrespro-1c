@@ -13,7 +13,7 @@ docker-postgrespro-1c -- это Docker-контейнер PostgreSQL для ис
     ./build.sh
     ./run.sh
 
-Если вы хотите заранее изменить конфигурацию PostgreSQL, отредактируйте файл `container/postgresql.conf.sh` перед вызовом `build.sh`.
+__ВАЖНО__ PostgreSQL в контейнере никак не сконфигурирован. Если вы хотите использовать свою конфигурацию PostgreSQL, отредактируйте файл `container/postgresql.conf.sh` перед вызовом `build.sh`.
 
 ## Как остановить/запустить/перезапустить контейнер?
 
