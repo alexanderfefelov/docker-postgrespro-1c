@@ -1,7 +1,5 @@
 FROM ubuntu:xenial
 
-ENV SERVER_VERSION 9.4
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN groupadd postgres --gid=999 \
@@ -19,6 +17,7 @@ RUN apt-get -qq update \
 RUN localedef --inputfile ru_RU --force --charmap UTF-8 --alias-file /usr/share/locale/locale.alias ru_RU.UTF-8
 ENV LANG ru_RU.utf8
 
+ENV SERVER_VERSION 9.4
 ENV PATH /usr/lib/postgresql/$SERVER_VERSION/bin:$PATH
 ENV PGDATA /data
 RUN echo deb http://1c.postgrespro.ru/deb/ xenial main > /etc/apt/sources.list.d/postgrespro-1c.list \
@@ -30,12 +29,9 @@ RUN echo deb http://1c.postgrespro.ru/deb/ xenial main > /etc/apt/sources.list.d
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir --parent /var/run/postgresql \
-  && chown --recursive postgres:postgres /var/run/postgresql \
-  && chmod g+s /var/run/postgresql \
-  && mkdir --parent "$PGDATA" \
-  && chown --recursive postgres:postgres "$PGDATA" \
-  && mkdir /docker-entrypoint-initdb.d
+RUN mkdir --parent /var/run/postgresql "$PGDATA" /docker-entrypoint-initdb.d \
+  && chown --recursive postgres:postgres /var/run/postgresql "$PGDATA" \
+  && chmod g+s /var/run/postgresql
 
 COPY container/docker-entrypoint.sh /
 COPY container/postgresql.conf.sh /docker-entrypoint-initdb.d
