@@ -37,6 +37,10 @@ docker-postgrespro-1c -- это Docker-контейнер PostgreSQL для ис
 
     docker rm -f postgrespro-1c
 
+Удалите образ:
+
+    docker rmi alexanderfefelov/postgrespro-1c
+
 :fire: Удалите данные:
 
     docker volume rm postgrespro-1c-data
